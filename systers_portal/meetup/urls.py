@@ -1,9 +1,10 @@
 from django.conf.urls import url
 
-from meetup.views import MeetupLocationDetailView
+from meetup.views import MeetupLocationDetailView, MeetupLocationListView
 
 
 urlpatterns = [
+    url(r'^locations$', MeetupLocationListView.as_view(), name='list_all_meetup_locations'),
     url(r'^(?P<slug>\w+)/upcoming/$',
         MeetupLocationDetailView.as_view(template_name='meetup/upcoming.html'),
         name='upcoming_meetup_location'),
